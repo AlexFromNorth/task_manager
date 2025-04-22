@@ -1,3 +1,4 @@
+
 import axios, { type CreateAxiosDefaults } from 'axios'
 
 import { errorCatch } from './error'
