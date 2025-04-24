@@ -2,6 +2,7 @@
 
 import { GanttChartSquare } from 'lucide-react'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 import { COLORS } from '@/constants/color.constants'
 
@@ -9,11 +10,26 @@ import { LogoutButton } from './LogoutButton'
 import { MenuItem } from './MenuItem'
 import { MENU } from './menu.data'
 
-const year = new Date().getFullYear();
+const year = new Date().getFullYear()
 
 export function Sidebar() {
+	const { t, i18n } = useTranslation()
+
+	const switchLanguage = (lang: string) => {
+		i18n.changeLanguage(lang) // Переключаем язык
+	}
+
 	return (
 		<aside className='border-r border-r-border h-full bg-sidebar flex flex-col justify-between'>
+			<div>
+				<h1>{t('welcome_message')}</h1> {/* Пример перевода по ключу */}
+				<p>{t('description')}</p>
+				<button onClick={() => switchLanguage('en')}>Switch to English</button>
+				<button onClick={() => switchLanguage('ru')}>
+					Переключиться на русский
+				</button>
+			</div>
+
 			<div>
 				<Link
 					href='/'
@@ -41,7 +57,7 @@ export function Sidebar() {
 				</div>
 			</div>
 			<footer className='text-xs opacity-40 font-normal text-center p-layout'>
-				{year} &copy; With love. 
+				{year} &copy; With love.
 				<br /> All rights reserved.
 			</footer>
 		</aside>
