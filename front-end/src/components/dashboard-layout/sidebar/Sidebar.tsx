@@ -23,7 +23,7 @@ export function Sidebar() {
 		<aside className='border-r border-r-border h-full bg-sidebar flex flex-col justify-between'>
 			<div>
 				<h1>{t('welcome_message')}</h1> {/* Пример перевода по ключу */}
-				<p>{t('description')}</p>
+				<p>{t('login')}</p>
 				<button onClick={() => switchLanguage('en')}>Switch to English</button>
 				<button onClick={() => switchLanguage('ru')}>
 					Переключиться на русский
