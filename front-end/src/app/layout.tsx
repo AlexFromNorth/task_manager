@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
-import { Toaster } from 'sonner'
-import { I18nProvider } from '@/components/provider/I18nProvider'
+import { Suspense } from 'react'
 
-import './globals.scss'
+import { I18nProvider } from '@/components/provider/I18nProvider'
 import { Providers } from './providers'
 import { SITE_NAME } from '@/constants/seo.constants'
+
+import './globals.scss'
+
+// Client-only component
+import ToasterClient from '@/components/toaster/ToasterClient'
 
 const zen = Noto_Sans({
   subsets: ['cyrillic', 'latin'],
@@ -31,12 +35,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={zen.className}>
-        <I18nProvider>
-          <Providers>
-            {children}
-            <Toaster theme="dark" position="bottom-right" duration={1500} />
-          </Providers>
-        </I18nProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <I18nProvider>
+            <Providers>
+              {children}
+              <ToasterClient />
+            </Providers>
+          </I18nProvider>
+        </Suspense>
       </body>
     </html>
   )
