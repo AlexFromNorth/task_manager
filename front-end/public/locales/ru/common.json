@@ -8,7 +8,7 @@
     "Planner": "Планировщик",
     "beta": "бета",
     "with love": "С любовью",
-    "all rights reserved": "Все права защищены",
+    "All rights reserved": "Все права защищены",
     "Dashboard": "Панель управления",
     "Tasks": "Задачи",
     "Pomodoro": "Помидор",
@@ -68,5 +68,12 @@
     "Enter break interval (min.): ": "Введите интервал перерыва (мин.): ",
     "Intervals count (max 10): ": "Количество интервалов (макс. 10): ",
     "Enter intervals count (max 10): ": "Введите количество интервалов (макс. 10): ",
-    "Save": "Сохранить"
+    "Save": "Сохранить",
+    "Pomodoro timer": "Таймер Помидор",
+    "Today": "Сегодня",
+	"Tomorrow": "Завтра",
+	"On this week": "На этой неделе",
+	"On next week": "На следующей неделе",
+	"Later": "Позже",
+	"Completed": "Завершено"
 }

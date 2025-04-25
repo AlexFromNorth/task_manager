@@ -56,7 +56,7 @@ export function Sidebar() {
       </div>
       <footer className='text-xs opacity-40 font-normal text-center p-layout'>
         {year} &copy; {t('with love')}
-        <br /> {t('all rights reserved')}
+        <br /> {t('All rights reserved')}
       </footer>
     </aside>
   )

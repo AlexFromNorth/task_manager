@@ -8,10 +8,12 @@ import { useTasks } from '../hooks/useTasks'
 
 import { KanbanColumn } from './KanbanColumn'
 import styles from './KanbanView.module.scss'
+import { useTranslation } from 'react-i18next'
 
 export function KanbanView() {
 	const { items, setItems } = useTasks()
 	const { onDragEnd } = useTaskDnd()
+	const { t } = useTranslation()
 
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
@@ -20,7 +22,7 @@ export function KanbanView() {
 					<KanbanColumn
 						key={column.value}
 						value={column.value}
-						label={column.label}
+						label={t(column.label)}
 						items={items}
 						setItems={setItems}
 					/>

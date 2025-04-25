@@ -15,6 +15,7 @@ export function ListView() {
 	const { items, setItems } = useTasks()
 	const { onDragEnd } = useTaskDnd()
 
+
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
 			<div className={styles.table}>
@@ -29,7 +30,7 @@ export function ListView() {
 					{COLUMNS.map(column => (
 						<ListRowParent
 							items={items}
-							label={column.label}
+							label={t(column.label)}
 							value={column.value}
 							setItems={setItems}
 							key={column.value}
