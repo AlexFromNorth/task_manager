@@ -9,11 +9,14 @@ import { TypeUserForm } from '@/types/auth.types'
 
 import { useInitialData } from './useInitialData'
 import { useUpdateSettings } from './useUpdateSettings'
+import { useTranslation } from 'react-i18next'
 
 export function Settings() {
 	const { register, handleSubmit, reset } = useForm<TypeUserForm>({
 		mode: 'onChange'
 	})
+
+	const { t } = useTranslation()
 
 	useInitialData(reset)
 
@@ -105,7 +108,7 @@ export function Settings() {
 					type='submit'
 					disabled={isPending}
 				>
-					Save
+					{t('Save')}
 				</Button>
 			</form>
 		</div>

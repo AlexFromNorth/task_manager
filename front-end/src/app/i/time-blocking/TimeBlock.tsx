@@ -1,5 +1,6 @@
 import { Edit, GripVertical, Loader, Trash } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 import type {
 	ITimeBlockResponse,
@@ -11,9 +12,8 @@ import { useDeleteTimeBlock } from './hooks/useDeleteTimeBlock'
 import { useTimeBlockSortable } from './hooks/useTimeBlockSortable'
 
 export function TimeBlock({ item }: { item: ITimeBlockResponse }) {
-	const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(
-		item.id
-	)
+	const { t } = useTranslation()
+	const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(item.id)
 	const { reset } = useFormContext<TypeTimeBlockFormState>()
 	const { deleteTimeBlock, isDeletePending } = useDeleteTimeBlock(item.id)
 
@@ -39,7 +39,9 @@ export function TimeBlock({ item }: { item: ITimeBlockResponse }) {
 					</button>
 					<div>
 						{item.name}{' '}
-						<i className='text-xs opacity-50'>({item.duration} min.)</i>
+						<i className='text-xs opacity-50'>
+							({t('{{count}} min.', { count: item.duration })})
+						</i>
 					</div>
 				</div>
 

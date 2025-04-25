@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 
 import { Heading } from '@/components/ui/Heading'
@@ -17,6 +18,8 @@ import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
 
 export function Auth() {
+	const { t } = useTranslation()
+
 	const { register, handleSubmit, reset } = useForm<IAuthForm>({
 		mode: 'onChange'
 	})
@@ -30,7 +33,7 @@ export function Auth() {
 		mutationFn: (data: IAuthForm) =>
 			authService.main(isLoginForm ? 'login' : 'register', data),
 		onSuccess() {
-			toast.success('Successfully login!')
+			toast.success(t('Successfully login!'))
 			reset()
 			push(DASHBOARD_PAGES.HOME)
 		}
@@ -46,33 +49,33 @@ export function Auth() {
 				className='w-1/4 m-auto shadow bg-sidebar rounded-xl p-layout'
 				onSubmit={handleSubmit(onSubmit)}
 			>
-				<Heading title='Auth' />
+				<Heading title={t('Auth')} />
 
 				<Field
 					id='email'
-					label='Email:'
-					placeholder='Enter email:'
+					label={t('Email:')}
+					placeholder={t('Enter email:')}
 					type='email'
 					extra='mb-4'
 					{...register('email', {
-						required: 'Email is required!'
+						required: t('Email is required!')
 					})}
 				/>
 
 				<Field
 					id='password'
-					label='Password: '
-					placeholder='Enter password: '
+					label={t('Password: ')}
+					placeholder={t('Enter password: ')}
 					type='password'
 					{...register('password', {
-						required: 'Password is required!'
+						required: t('Password is required!')
 					})}
 					extra='mb-6'
 				/>
 
 				<div className='flex items-center gap-5 justify-center'>
-					<Button onClick={() => setIsLoginForm(true)}>Login</Button>
-					<Button onClick={() => setIsLoginForm(false)}>Register</Button>
+					<Button onClick={() => setIsLoginForm(true)}>{t('Login')}</Button>
+					<Button onClick={() => setIsLoginForm(false)}>{t('Register')}</Button>
 				</div>
 			</form>
 		</div>

@@ -1,4 +1,7 @@
+'use client'
+
 import { type Dispatch, type SetStateAction } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { ITaskResponse } from '@/types/task.types'
 
@@ -11,6 +14,8 @@ export function KanbanAddCardInput({
 	setItems,
 	filterDate
 }: IKanbanAddCardInput) {
+	const { t } = useTranslation()
+
 	const addCard = () => {
 		setItems(prev => {
 			if (!prev) return
@@ -33,7 +38,7 @@ export function KanbanAddCardInput({
 				onClick={addCard}
 				className='italic opacity-40 text-sm'
 			>
-				Add task...
+				{t('Add task...')} 
 			</button>
 		</div>
 	)

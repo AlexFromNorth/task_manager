@@ -11,6 +11,7 @@ import { useTimer } from './hooks/useTimer'
 import { useTimerActions } from './hooks/useTimerActions'
 import { useTodaySession } from './hooks/useTodaySession'
 import { PomodoroRounds } from './rounds/PomodoroRounds'
+import { useTranslation } from 'react-i18next'
 
 export function Pomodoro() {
 	const timerState = useTimer()
@@ -24,6 +25,8 @@ export function Pomodoro() {
 	const { deleteSession, isDeletePending } = useDeleteSession(() =>
 		timerState.setSecondsLeft(workInterval * 60)
 	)
+
+	const { t } = useTranslation()
 
 	return (
 		<div className='relative w-80 text-center'>
@@ -68,7 +71,7 @@ export function Pomodoro() {
 					className='mt-1'
 					disabled={isPending}
 				>
-					Create session
+					{t('Create session')}
 				</Button>
 			)}
 		</div>

@@ -1,8 +1,8 @@
 import cn from 'clsx'
 import { X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 import { Badge } from '@/components/ui/Badge'
-
 import { useOutside } from '@/hooks/useOutside'
 
 export interface IOption {
@@ -24,7 +24,9 @@ export function SingleSelect({
 	isColorSelect
 }: ISingleSelect) {
 	const { isShow, setIsShow, ref } = useOutside(false)
-	const getValue = () => data.find(item => item.value === value)?.value
+	const { t } = useTranslation()
+
+	const getValue = () => data.find(item => item.value === value)?.label
 
 	return (
 		<div
@@ -45,10 +47,10 @@ export function SingleSelect({
 						className='capitalize'
 						style={isColorSelect ? { backgroundColor: value } : {}}
 					>
-						{getValue()}
+						{t(getValue()!)}
 					</Badge>
 				) : (
-					<Badge>Click for select</Badge>
+					<Badge>{t('Click for select')}</Badge>
 				)}
 			</button>
 			{value && (
@@ -88,7 +90,7 @@ export function SingleSelect({
 									: {}
 							}
 						>
-							<Badge variant={item.value}>{item.label}</Badge>
+							<Badge variant={item.value}>{t(item.label)}</Badge>
 						</button>
 					))}
 				</div>

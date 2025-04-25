@@ -1,8 +1,11 @@
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 import { IMenuItem } from './menu.interface'
 
 export function MenuItem({ item }: { item: IMenuItem }) {
+	const { t } = useTranslation()
+
 	return (
 		<div>
 			<Link
@@ -10,7 +13,7 @@ export function MenuItem({ item }: { item: IMenuItem }) {
 				className='flex gap-2.5 items-center py-1.5 mt-2 px-layout transition-colors hover:bg-border rounded-lg'
 			>
 				<item.icon />
-				<span>{item.name}</span>
+				<span>{t(item.name)}</span>
 			</Link>
 		</div>
 	)

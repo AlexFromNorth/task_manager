@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 }
 
 export default function DashboardPage() {
+
+	
 	return (
 		<div>
 			<Heading title='Statistics' />

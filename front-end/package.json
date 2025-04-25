@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "red-planner-front-end",
+  "name": "planner-front-end",
   "version": "0.1.0",
   "private": true,
   "scripts": {

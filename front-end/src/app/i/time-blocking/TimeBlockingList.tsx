@@ -1,5 +1,6 @@
 import { DndContext, closestCenter } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { useTranslation } from 'react-i18next'
 
 import Loader from '@/components/ui/Loader'
 
@@ -10,6 +11,7 @@ import { useTimeBlockDnd } from './hooks/useTimeBlockDnd'
 import { useTimeBlocks } from './hooks/useTimeBlocks'
 
 export function TimeBlockingList() {
+	const { t } = useTranslation()
 	const { items, setItems, isLoading } = useTimeBlocks()
 	const { handleDragEnd, sensors } = useTimeBlockDnd(items, setItems)
 
@@ -30,22 +32,19 @@ export function TimeBlockingList() {
 						strategy={verticalListSortingStrategy}
 					>
 						{items?.length ? (
-							items?.map(item => (
-								<TimeBlock
-									key={item.id}
-									item={item}
-								/>
+							items.map(item => (
+								<TimeBlock key={item.id} item={item} />
 							))
 						) : (
-							<div>Add the first time-block on the right form</div>
+							<div>{t('Add the first time-block on the right form')}</div>
 						)}
 					</SortableContext>
 				</div>
 			</DndContext>
 			<div>
 				{hoursLeft > 0
-					? `${hoursLeft} hours out of 24 left for sleep`
-					: 'No hours left for sleep'}
+					? t('{{count}} hours out of 24 left for sleep', { count: hoursLeft })
+					: t('No hours left for sleep')}
 			</div>
 		</div>
 	)

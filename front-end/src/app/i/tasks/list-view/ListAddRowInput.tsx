@@ -1,4 +1,7 @@
+'use client'
+
 import { type Dispatch, type SetStateAction } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ITaskResponse } from '@/types/task.types'
 
@@ -10,6 +13,8 @@ interface IListAddRowInput {
 }
 
 export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
+	const { t } = useTranslation() // Используем t() для перевода
+
 	const addRow = () => {
 		setItems(prev => {
 			if (!prev) return
@@ -32,7 +37,7 @@ export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
 				onClick={addRow}
 				className='italic opacity-40 text-sm'
 			>
-				Add task...
+				{t('Add task...')} 
 			</button>
 		</div>
 	)

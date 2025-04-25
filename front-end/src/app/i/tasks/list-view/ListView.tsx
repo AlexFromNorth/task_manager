@@ -1,6 +1,7 @@
 'use client'
 
 import { DragDropContext } from '@hello-pangea/dnd'
+import { useTranslation } from 'react-i18next'
 
 import { COLUMNS } from '../columns.data'
 import { useTaskDnd } from '../hooks/useTaskDnd'
@@ -10,6 +11,7 @@ import { ListRowParent } from './ListRowParent'
 import styles from './ListView.module.scss'
 
 export function ListView() {
+	const { t } = useTranslation() 
 	const { items, setItems } = useTasks()
 	const { onDragEnd } = useTaskDnd()
 
@@ -17,9 +19,9 @@ export function ListView() {
 		<DragDropContext onDragEnd={onDragEnd}>
 			<div className={styles.table}>
 				<div className={styles.header}>
-					<div>Task name</div>
-					<div>Due date</div>
-					<div>Priority</div>
+					<div>{t('Task name')}</div>
+					<div>{t('Due date')}</div> 
+					<div>{t('Priority')}</div> 
 					<div></div>
 				</div>
 

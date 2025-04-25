@@ -2,6 +2,7 @@
 
 import cn from 'clsx'
 import { Kanban, ListTodo } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 import type { TypeView } from './TasksView'
 
@@ -11,6 +12,8 @@ interface ISwitcherView {
 }
 
 export function SwitcherView({ setType, type }: ISwitcherView) {
+	const { t } = useTranslation()
+
 	return (
 		<div className='flex items-center gap-4 mb-5'>
 			<button
@@ -20,7 +23,7 @@ export function SwitcherView({ setType, type }: ISwitcherView) {
 				onClick={() => setType('list')}
 			>
 				<ListTodo />
-				List
+				{t('List')}
 			</button>
 			<button
 				className={cn('flex items-center gap-1', {
@@ -29,7 +32,7 @@ export function SwitcherView({ setType, type }: ISwitcherView) {
 				onClick={() => setType('kanban')}
 			>
 				<Kanban />
-				Board
+				{t('Board')}
 			</button>
 		</div>
 	)
