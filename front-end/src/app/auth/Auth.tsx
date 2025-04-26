@@ -7,6 +7,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 
+import styles from './Auth.module.scss'
+
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
@@ -16,6 +18,7 @@ import { IAuthForm } from '@/types/auth.types'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
 import { authService } from '@/services/auth.service'
+import { LanguageSwitcher } from '@/components/ui/language-switcher/LanguageSwitcher'
 
 export function Auth() {
 	const { t } = useTranslation()
@@ -45,6 +48,8 @@ export function Auth() {
 
 	return (
 		<div className='flex min-h-screen'>
+			<LanguageSwitcher cssProps={styles.language_btn}/>
+
 			<form
 				className='w-1/4 m-auto shadow bg-sidebar rounded-xl p-layout'
 				onSubmit={handleSubmit(onSubmit)}

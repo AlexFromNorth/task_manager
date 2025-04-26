@@ -2,7 +2,11 @@
 
 import { useTranslation } from 'react-i18next'
 
-export function LanguageSwitcher() {
+interface ILanguageSwitcher {
+	cssProps?: string
+}
+
+export function LanguageSwitcher({ cssProps }: ILanguageSwitcher) {
 	const { t, i18n } = useTranslation()
 
 	const switchLanguage = (lang: string) => {
@@ -12,7 +16,7 @@ export function LanguageSwitcher() {
 	const currentLanguage = i18n.language
 
 	return (
-		<div className='relative inline-block group'>
+		<div className={`relative inline-block group ${cssProps || ''}`}>
 			{currentLanguage === 'ru' && (
 				<button
 					onClick={() => switchLanguage('en')}
@@ -32,8 +36,8 @@ export function LanguageSwitcher() {
 
 			{/* Tooltip */}
 			<div className='absolute -translate-x-3/4 mt-2 w-max px-3 py-1 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none'>
-				{currentLanguage === 'ru' && 'Switch to English' }
-				{currentLanguage === 'en' && 'Переключить на русский' }
+				{currentLanguage === 'ru' && 'Switch to English'}
+				{currentLanguage === 'en' && 'Переключить на русский'}
 			</div>
 		</div>
 	)

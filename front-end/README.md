@@ -5,8 +5,6 @@
 ```bash
 yarn 
 # then
-npm run dev
-# or
 yarn dev
 ```
 - проект откроется по пути http://localhost:3000/i и должен попросить авторизации, поэтому сперва стоит выполнить этапы из readme back-end
