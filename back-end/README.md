@@ -37,4 +37,4 @@ $ pnpm run test:cov
 
 ## Technology Stack
 
-`NEST`, `NODE`, `SCSS`, `TS(type script)`
+`NEST` `NODE` `SCSS` `TS(type script)`

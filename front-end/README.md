@@ -3,6 +3,8 @@
 Если необходимо запустить проект, необходимо прописать:
 
 ```bash
+yarn 
+# then
 npm run dev
 # or
 yarn dev
@@ -21,4 +23,4 @@ yarn start
 
 ## Technology Stack
 
-`NEXT`, `REACT`, `SCSS`, `TAILWIND`, `I18N(language translate)`, `TS(type script)`
+`NEXT` `REACT` `SCSS` `TAILWIND` `I18N(language translate)` `TS(type script)`
