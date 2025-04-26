@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import Loader from '@/components/ui/Loader'
 import { LanguageSwitcher } from '@/components/ui/language-switcher/LanguageSwitcher'
 
@@ -20,8 +22,7 @@ export function Profile() {
 					</div>
 
 					<div className='w-10 h-10 flex justify-center items-center text-2xl text-white bg-white/20 rounded uppercase mr-3 hover:border transition'>
-						{data?.user.name?.charAt(0) || 'A'} 
-						{/* {data?.user.email?.charAt(0) || 'A'} */}
+						<Link href='/i/settings'>{data?.user.name?.charAt(0) || 'A'}</Link>
 					</div>
 
 					<LanguageSwitcher />

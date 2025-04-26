@@ -1,8 +1,8 @@
 'use client'
 
 import { GanttChartSquare } from 'lucide-react'
-import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 import { COLORS } from '@/constants/color.constants'
 
