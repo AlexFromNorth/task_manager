@@ -30,6 +30,7 @@ export function Pomodoro() {
 
 	return (
 		<div className='relative w-80 text-center'>
+			
 			{!isLoading && (
 				<div className='text-7xl font-semibold'>
 					{formatTime(timerState.secondsLeft)}

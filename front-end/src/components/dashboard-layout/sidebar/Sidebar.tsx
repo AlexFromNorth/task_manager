@@ -15,18 +15,8 @@ const year = new Date().getFullYear()
 export function Sidebar() {
   const { t, i18n } = useTranslation()
 
-  const switchLanguage = (lang: string) => {
-    i18n.changeLanguage(lang) // Переключаем язык
-  }
-
   return (
     <aside className='border-r border-r-border h-full bg-sidebar flex flex-col justify-between'>
-      <div>
-        <p>{t('login')}</p>
-        <p>{t('login123')}</p> 
-        <button onClick={() => switchLanguage('en')}>{t('switch to english')}</button>
-        <button onClick={() => switchLanguage('ru')}>{t('switch to russian')}</button>
-      </div>
 
       <div>
         <Link
