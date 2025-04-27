@@ -34,10 +34,9 @@ export function Settings() {
 	return (
 		<div>
 			<form
-				className='w-2/4'
 				onSubmit={handleSubmit(onSubmit)}
 			>
-				<div className='grid grid-cols-2 gap-10'>
+				<div className='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-10'>
 					<div>
 						<Field
 							id='email'
@@ -64,7 +63,7 @@ export function Settings() {
 							placeholder='Enter password: '
 							type='password'
 							{...register('password')}
-							extra='mb-10'
+							extra='mb-4'
 						/>
 					</div>
 
