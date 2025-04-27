@@ -45,21 +45,22 @@ export function Auth() {
 	const onSubmit: SubmitHandler<IAuthForm> = data => {
 		mutate(data)
 	}
+	console.log(t('Email: '));
 
 	return (
 		<div className='flex min-h-screen'>
 			<LanguageSwitcher cssProps={styles.language_btn}/>
 
 			<form
-				className='w-1/4 m-auto shadow bg-sidebar rounded-xl p-layout'
+				className='w-3/4 m-auto shadow bg-sidebar rounded-xl p-layout max-w-[450px]'
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<Heading title={t('Auth')} />
 
 				<Field
 					id='email'
-					label={t('Email:')}
-					placeholder={t('Enter email:')}
+					label={t('Email: ')}
+					placeholder={t('Enter email: ')}
 					type='email'
 					extra='mb-4'
 					{...register('email', {
@@ -78,7 +79,7 @@ export function Auth() {
 					extra='mb-6'
 				/>
 
-				<div className='flex items-center gap-5 justify-center'>
+				<div className='flex items-center justify-between'>
 					<Button onClick={() => setIsLoginForm(true)}>{t('Login')}</Button>
 					<Button onClick={() => setIsLoginForm(false)}>{t('Register')}</Button>
 				</div>
