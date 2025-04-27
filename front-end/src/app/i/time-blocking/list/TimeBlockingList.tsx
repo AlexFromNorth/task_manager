@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next'
 
 import Loader from '@/components/ui/Loader'
 
+import { calcHoursLeft } from '../calc-hours-left'
+import { useTimeBlockDnd } from '../hooks/useTimeBlockDnd'
+import { useTimeBlocks } from '../hooks/useTimeBlocks'
+
 import { TimeBlock } from './TimeBlock'
-import styles from './TimeBlocking.module.scss'
-import { calcHoursLeft } from './calc-hours-left'
-import { useTimeBlockDnd } from './hooks/useTimeBlockDnd'
-import { useTimeBlocks } from './hooks/useTimeBlocks'
+import styles from './TimeBlock.module.scss'
 
 export function TimeBlockingList() {
 	const { t } = useTranslation()
@@ -33,7 +34,10 @@ export function TimeBlockingList() {
 					>
 						{items?.length ? (
 							items.map(item => (
-								<TimeBlock key={item.id} item={item} />
+								<TimeBlock
+									key={item.id}
+									item={item}
+								/>
 							))
 						) : (
 							<div>{t('Add the first time-block on the right form')}</div>

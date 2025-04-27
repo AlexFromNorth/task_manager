@@ -44,7 +44,7 @@ export function TimeBlockingForm() {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className='w-3/5'
+			className='w-5/5'
 		>
 			<Field
 				{...register('name', {

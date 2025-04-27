@@ -7,13 +7,16 @@ import type {
 	TypeTimeBlockFormState
 } from '@/types/time-block.types'
 
-import styles from './TimeBlocking.module.scss'
-import { useDeleteTimeBlock } from './hooks/useDeleteTimeBlock'
-import { useTimeBlockSortable } from './hooks/useTimeBlockSortable'
+import { useDeleteTimeBlock } from '../hooks/useDeleteTimeBlock'
+import { useTimeBlockSortable } from '../hooks/useTimeBlockSortable'
+
+import styles from './TimeBlock.module.scss'
 
 export function TimeBlock({ item }: { item: ITimeBlockResponse }) {
 	const { t } = useTranslation()
-	const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(item.id)
+	const { attributes, listeners, setNodeRef, style } = useTimeBlockSortable(
+		item.id
+	)
 	const { reset } = useFormContext<TypeTimeBlockFormState>()
 	const { deleteTimeBlock, isDeletePending } = useDeleteTimeBlock(item.id)
 
