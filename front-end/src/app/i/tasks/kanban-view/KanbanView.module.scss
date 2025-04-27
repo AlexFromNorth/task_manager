@@ -3,9 +3,10 @@
 	overflow-x: auto;
 
 	.column {
-		@apply w-[17rem];
+		@apply w-[15rem];
 		white-space: nowrap;
 		min-height: 79vh;
+
 
 		.card {
 			@apply rounded border border-border mt-5 p-4 relative bg-[#0e0f0f];
