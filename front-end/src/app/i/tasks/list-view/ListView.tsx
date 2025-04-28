@@ -15,7 +15,6 @@ export function ListView() {
 	const { items, setItems } = useTasks()
 	const { onDragEnd } = useTaskDnd()
 
-
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
 			<div className={styles.table}>

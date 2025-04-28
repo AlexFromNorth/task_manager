@@ -45,7 +45,6 @@ export function Auth() {
 	const onSubmit: SubmitHandler<IAuthForm> = data => {
 		mutate(data)
 	}
-	console.log(t('Email: '));
 
 	return (
 		<div className='flex min-h-screen'>
