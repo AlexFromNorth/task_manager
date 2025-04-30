@@ -24,6 +24,7 @@ export function ListRow({ item, setItems }: IListRow) {
 	const { register, control, watch } = useForm<TypeTaskFormState>({
 		defaultValues: {
 			name: item.name,
+			description: item.description ?? '',
 			isCompleted: item.isCompleted,
 			createdAt: item.createdAt,
 			priority: item.priority
@@ -60,6 +61,8 @@ export function ListRow({ item, setItems }: IListRow) {
 					/>
 
 					<TransparentField {...register('name')} />
+					<br/>
+					<TransparentField {...register('description')} />
 				</span>
 			</div>
 			<div>

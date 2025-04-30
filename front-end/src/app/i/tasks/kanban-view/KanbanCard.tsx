@@ -24,6 +24,7 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 	const { register, control, watch } = useForm<TypeTaskFormState>({
 		defaultValues: {
 			name: item.name,
+			description: item.description ?? '',
 			isCompleted: item.isCompleted,
 			createdAt: item.createdAt,
 			priority: item.priority
@@ -45,22 +46,28 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 			)}
 		>
 			<div className={styles.cardHeader}>
-				<button aria-describedby='todo-item'>
-					<GripVertical className={styles.grip} />
-				</button>
+				<div className='block w-100'>
+					<button aria-describedby='todo-item'>
+						<GripVertical className={styles.grip} />
+					</button>
 
-				<Controller
-					control={control}
-					name='isCompleted'
-					render={({ field: { value, onChange } }) => (
-						<Checkbox
-							onChange={onChange}
-							checked={value}
-						/>
-					)}
-				/>
+					<Controller
+						control={control}
+						name='isCompleted'
+						render={({ field: { value, onChange } }) => (
+							<Checkbox
+								onChange={onChange}
+								checked={value}
+							/>
+						)}
+					/>
 
-				<TransparentField {...register('name')} />
+					<TransparentField {...register('name')} />
+				</div>
+
+				<div className='block w-100'>
+					<TransparentField {...register('description')} />
+				</div>
 			</div>
 
 			<div className={styles.cardBody}>

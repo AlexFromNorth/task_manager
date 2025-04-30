@@ -1,9 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import { type Dispatch, type SetStateAction } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ITaskResponse } from '@/types/task.types'
+import { taskService } from '@/services/task.service'
+import type { ITaskResponse } from '@/types/task.types'
 
 import styles from './ListView.module.scss'
 
@@ -13,22 +15,30 @@ interface IListAddRowInput {
 }
 
 export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
-	const { t } = useTranslation() // Используем t() для перевода
+	const { t } = useTranslation()
+	const [isLoading, setIsLoading] = useState(false)
 
-	const addRow = () => {
-		setItems(prev => {
-			if (!prev) return
+	const addRow = async () => {
+		try {
+			setIsLoading(true)
 
-			return [
-				...prev,
-				{
-					id: '',
-					name: '',
-					isCompleted: false,
-					createdAt: filterDate
-				}
-			]
-		})
+			const response = await taskService.createTask({
+				name: '',
+				description: '',
+				createdAt: filterDate
+			})
+
+			const newTask = response.data
+
+			setItems(prev => {
+				if (!prev) return [newTask]
+				return [...prev, newTask]
+			})
+		} catch (error) {
+			console.error('Ошибка создания задачи:', error)
+		} finally {
+			setIsLoading(false)
+		}
 	}
 
 	return (
@@ -36,8 +46,9 @@ export function ListAddRowInput({ setItems, filterDate }: IListAddRowInput) {
 			<button
 				onClick={addRow}
 				className='italic opacity-40 text-sm'
+				disabled={isLoading}
 			>
-				{t('Add task...')} 
+				{isLoading ? t('Loading...') : t('Add task...')}
 			</button>
 		</div>
 	)

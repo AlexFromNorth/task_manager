@@ -18,6 +18,9 @@ interface IKanbanColumn {
 }
 
 export function KanbanColumn({ value, items, label, setItems }: IKanbanColumn) {
+	console.log('items перед отрисовкой:', items)
+	console.log('отфильтрованные items:', filterTasks(items, value))
+
 	return (
 		<Droppable droppableId={value}>
 			{provided => (

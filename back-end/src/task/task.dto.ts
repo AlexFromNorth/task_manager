@@ -15,8 +15,14 @@ export class TaskDto {
 	@IsOptional()
 	createdAt?: string
 
+	@IsString()
+	@IsOptional()
+	description?: string
+
 	@IsEnum(Priority)
 	@IsOptional()
 	@Transform(({ value }) => ('' + value).toLowerCase())
 	priority?: Priority
+
+
 }

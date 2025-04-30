@@ -76,5 +76,7 @@
 	"Later": "Позже",
 	"Completed": "Завершено",
 	"Board": "Доска",
-	"List": "Список"
+	"List": "Список",
+    "Your Task": "Ваша задача",
+    "Task Description": "Описание задачи"
 }
