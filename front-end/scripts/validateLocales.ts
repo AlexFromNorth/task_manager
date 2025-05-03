@@ -25,7 +25,7 @@ function processLocale(filePath: string): string[] {
 		fs.writeFileSync(filePath, JSON.stringify(sorted, null, 4))
 		return Object.keys(sorted)
 	} catch (error) {
-		console.error(`Error processing ${filePath}:`, error)
+		console.log(`Error processing ${filePath}:`, error)
 		return []
 	}
 }
