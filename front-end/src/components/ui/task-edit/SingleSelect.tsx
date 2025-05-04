@@ -3,6 +3,7 @@ import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import { Badge } from '@/components/ui/Badge'
+
 import { useOutside } from '@/hooks/useOutside'
 
 export interface IOption {
@@ -30,7 +31,7 @@ export function SingleSelect({
 
 	return (
 		<div
-			className={cn('relative min-w-36', {
+			className={cn('relative w-[90px]', {
 				'w-max': isColorSelect
 			})}
 			ref={ref}
@@ -55,13 +56,13 @@ export function SingleSelect({
 			</button>
 			{value && (
 				<button
-					className='absolute top-0 right-0 opacity-30 hover:opacity-100 transition-opacity'
+					className='absolute top-[-5px] right-0 opacity-75 hover:opacity-100 transition-opacity'
 					onClick={e => {
 						e.preventDefault()
 						onChange('')
 					}}
 				>
-					<X size={14} />
+					<X size={19} />
 				</button>
 			)}
 			{isShow && (
@@ -73,26 +74,29 @@ export function SingleSelect({
 						top: 'calc(100% + .5rem)'
 					}}
 				>
-					{data.map(item => (
-						<button
-							key={item.value}
-							onClick={e => {
-								e.preventDefault()
-								onChange(item.value)
-								setIsShow(false)
-							}}
-							className='block mb-4 last:mb-0 capitalize rounded-lg'
-							style={
-								isColorSelect
-									? {
-											backgroundColor: item.value
-										}
-									: {}
-							}
-						>
-							<Badge variant={item.value}>{t(item.label)}</Badge>
-						</button>
-					))}
+					{data.map(item => {
+						console.log(1, item.value)
+						return (
+							<button
+								key={item.value}
+								onClick={e => {
+									e.preventDefault()
+									onChange(item.value)
+									setIsShow(false)
+								}}
+								className='block mb-4 last:mb-0 capitalize rounded-lg'
+								style={
+									isColorSelect
+										? {
+												backgroundColor: item.value
+											}
+										: {}
+								}
+							>
+								<Badge variant={item.value}>{t(item.label)}</Badge>
+							</button>
+						)
+					})}
 				</div>
 			)}
 		</div>

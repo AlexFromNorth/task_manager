@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import Checkbox from '@/components/ui/checkbox'
-import { TransparentField } from '@/components/ui/fields/TransparentField'
+import { InputField } from '@/components/ui/fields/InputField'
 import { SingleSelect } from '@/components/ui/task-edit/SingleSelect'
 import { DatePicker } from '@/components/ui/task-edit/date-picker/DatePicker'
 
@@ -14,6 +14,7 @@ import { useDeleteTask } from '../hooks/useDeleteTask'
 import { useTaskDebounce } from '../hooks/useTaskDebounce'
 
 import styles from './KanbanView.module.scss'
+import { TextareaField } from '@/components/ui/fields/TextareaField'
 
 interface IKanbanCard {
 	item: ITaskResponse
@@ -46,7 +47,7 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 			)}
 		>
 			<div className={styles.cardHeader}>
-				<div className='block w-100'>
+				<div className='block w-100 flex items-center mb-2'>
 					<button aria-describedby='todo-item'>
 						<GripVertical className={styles.grip} />
 					</button>
@@ -62,11 +63,19 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 						)}
 					/>
 
-					<TransparentField {...register('name')} />
+					<InputField
+						{...register('name')}
+						maxLength={18}
+						className='ml-2'
+					/>
 				</div>
 
 				<div className='block w-100'>
-					<TransparentField {...register('description')} />
+					<TextareaField
+						{...register('description')}
+						rows={4}
+						maxLength={118}
+					/>
 				</div>
 			</div>
 
@@ -104,9 +113,9 @@ export function KanbanCard({ item, setItems }: IKanbanCard) {
 					onClick={() =>
 						item.id ? deleteTask(item.id) : setItems(prev => prev?.slice(0, -1))
 					}
-					className='opacity-50 transition-opacity hover:opacity-100'
+					className='opacity-75 transition-opacity hover:opacity-100 text-horizonRed-990'
 				>
-					{isDeletePending ? <Loader size={15} /> : <Trash size={15} />}
+					{isDeletePending ? <Loader size={19} /> : <Trash size={19} />}
 				</button>
 			</div>
 		</div>

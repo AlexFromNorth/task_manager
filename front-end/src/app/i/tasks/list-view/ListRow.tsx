@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import Checkbox from '@/components/ui/checkbox'
-import { TransparentField } from '@/components/ui/fields/TransparentField'
+import { InputField } from '@/components/ui/fields/InputField'
 import { SingleSelect } from '@/components/ui/task-edit/SingleSelect'
 import { DatePicker } from '@/components/ui/task-edit/date-picker/DatePicker'
 
@@ -60,10 +60,11 @@ export function ListRow({ item, setItems }: IListRow) {
 						)}
 					/>
 
-					<TransparentField {...register('name')} />
-					<br/>
-					<TransparentField {...register('description')} />
+					<InputField {...register('name')} />
 				</span>
+			</div>
+			<div>
+				<InputField {...register('description')} />
 			</div>
 			<div>
 				<Controller

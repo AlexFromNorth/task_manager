@@ -19,7 +19,8 @@ export function ListView() {
 		<DragDropContext onDragEnd={onDragEnd}>
 			<div className={styles.table}>
 				<div className={styles.header}>
-					<div>{t('Task name')}</div>
+					<div>{t('Task name')}</div>    
+					<div>{t('Description')}</div>    
 					<div>{t('Due date')}</div> 
 					<div>{t('Priority')}</div> 
 					<div></div>

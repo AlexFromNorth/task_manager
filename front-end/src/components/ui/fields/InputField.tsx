@@ -2,17 +2,12 @@ import cn from 'clsx'
 import { type InputHTMLAttributes, forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
-type TypeTransparentField = InputHTMLAttributes<HTMLInputElement>
+type TypeInputField = InputHTMLAttributes<HTMLInputElement>
 
-export const TransparentField = forwardRef<
+export const InputField = forwardRef<
 	HTMLInputElement,
-	TypeTransparentField
+	TypeInputField
 >(({ className, ...rest }, ref) => {
-
-	console.log(className)
-	console.log(ref)
-	console.log(rest)
-
 	const { t } = useTranslation()
 
 	return (
@@ -21,11 +16,11 @@ export const TransparentField = forwardRef<
 				'bg-transparent border-none focus:outline-0 focus:shadow-transparent w-full',
 				className
 			)}
-			placeholder={rest.name=='name'?t('Your Task'):t('Task Description')}
+			placeholder={rest.name == 'name' ? t('Your Task') : t('Task Description')}
 			ref={ref}
 			{...rest}
 		/>
 	)
 })
 
-TransparentField.displayName = 'TransparentField'
+InputField.displayName = 'InputField'

@@ -16,7 +16,7 @@
 			}
 
 			.cardHeader {
-				@apply flex items-center mb-2;
+				@apply  items-center mb-2;
 				font-size: 93%;
 				flex-wrap: wrap;
 
@@ -34,10 +34,14 @@
 			.cardBody {
 				> div {
 					@apply mb-2.5 w-max;
-					min-width: 6rem;
+					min-width: 5rem;
 
 					> button:last-child {
-						@apply opacity-15;
+						@apply opacity-40;
+						@apply text-horizonRed-990;
+					}
+					> button:last-child:hover {
+						@apply opacity-50;
 					}
 				}
 			}
