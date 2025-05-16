@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Сервис PostgreSQL
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: planner-record
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Сервис бэкенда (NestJS)
+  back-end:
+    build: ./back-end  # Собирает образ из back-end/Dockerfile
+    ports:
+      - "3000:3000"  # Порт хоста:порт контейнера
+    environment:
+      DATABASE_URL: "postgresql://postgres:123456@db:5432/planner-record?schema=public"
+      JWT_SECRET: "D*IRNF(@#*)"
+    depends_on:
+      - db  # Ждёт запуска БД
+
+  # Сервис фронтенда (Next.js)
+  front-end:
+    build: ./front-end  # Собирает образ из front-end/Dockerfile
+    ports:
+      - "3001:3000"  # Фронт доступен на 3001 (чтобы не конфликтовать с бэком)
+    environment:
+      NEXT_PUBLIC_API_URL: "http://localhost:3000"  # Или http://back-end:3000 для Docker-сети
+    depends_on:
+      - back-end  # Ждёт запуска бэка
+
+volumes:
+  postgres_data:  # Постоянное хранилище для БД
